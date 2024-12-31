@@ -2,10 +2,24 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const apiUrl = "https://7cqup4uc5a.execute-api.us-east-1.amazonaws.com/get_block_island_data_from_s3";
+  function getAPI() {
+    axios.get(apiUrl, {
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+    }).then(response => {
+      console.log(response.status);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+  getAPI();
+  
   return (
     <>
       <div>
