@@ -2,6 +2,11 @@ import { useFetchData } from "./FetchData";
 import pako from 'pako';
 import { useState, useEffect } from "react";
 
+
+// I didn't end up using this as API gateway ended up automatically uncompressing
+// my gzip file. But I'll keep this here for my own future reference
+
+
 export const useUnzipData = () => {
     const {loading, data: compressedData , error} = useFetchData();
     const {uncompressedData, setUncompressedData} = useState(null);

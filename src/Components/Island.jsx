@@ -14,7 +14,7 @@ const Island = () => {
         const height = mountRef.current.clientHeight;
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 500);
         camera.position.z = 50;
 
         const renderer = new THREE.WebGLRenderer();
@@ -40,9 +40,9 @@ const Island = () => {
         const jsonString = decoder.decode(data);
         
         const jsonData = JSON.parse(jsonString);
-        console.log(typeof jsonData);
-        const scaleFactor = 500;
-        const elevationScaleFactor = 500;
+       
+        const scaleFactor = 100;
+        const elevationScaleFactor = 10;
         let minX = Infinity, maxX = -Infinity;
         let minY = Infinity, maxY = -Infinity;
         let minZ = Infinity, maxZ = -Infinity;
@@ -70,8 +70,9 @@ const Island = () => {
         geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 20, 
+            size: 3, 
             vertexColors: true,
+            precision: 'highp'
         });
 
         const points = new THREE.Points(geometry, material);
@@ -83,7 +84,7 @@ const Island = () => {
         scene.add(ambientLight);
         scene.add(directionalLight);
 
-        camera.position.set(centerX, centerY, 500);
+        camera.position.set(centerX, centerY, 300);
         controls.target.set(centerX, centerY, centerZ);
 
         const animate = () => {
