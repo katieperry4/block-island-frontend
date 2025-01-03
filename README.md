@@ -10,6 +10,8 @@ And here's a link to the Python files: https://github.com/katieperry4/block-isla
 ## Cloud
 I wanted to use AWS for this project so I used S3 to hold my data, Lambda to fetch the data, and API gateway to call the Lambda function and send the data to the front end.
 Here's my Lambda function, if you're interested:
+```
+
 import json
 import boto3
 import gzip
@@ -37,6 +39,7 @@ def lambda_handler(event, context):
         'isBase64Encoded': True
     }
 
+```
 
 ## Front End
 I used React.js for the front end and Three.js to handle the 3D rendering. (Have a look in the components folder, Island.jsx file to see the Three.js logic)
